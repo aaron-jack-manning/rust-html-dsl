@@ -1,0 +1,8 @@
+[package]
+name = "html_dsl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+proc_macros = { path = "proc_macros" }
+dsl = { path = "dsl" }
