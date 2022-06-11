@@ -16,7 +16,7 @@ fn main() {
         html!([lang("en")][
             head!([][
                 meta!([charset("utf-8")]),
-                meta!([name("description"), content("This is a demo of this DSL.")])
+                meta!([name("description"), attr::content("This is a demo of this DSL.")])
             ]),
             body!([][
                 div!([][

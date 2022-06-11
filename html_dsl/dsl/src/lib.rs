@@ -41,6 +41,20 @@ pub mod nodes {
 
     pub trait Node : ToString {}
 
+    pub trait ParentNode : Node {
+        fn child<N>(&mut self, child : N)
+            where N : Node, N : 'static;
+    }
+
+    pub trait StylableNode : Node {
+        fn style(&mut self, style : Style);
+    }
+
+    pub trait AttributableNode : Node {
+        fn attribute<A>(&mut self, attribute : A)
+            where A : Attribute, A : 'static;
+    }
+
     all_nodes!();
 
     // Text primitive

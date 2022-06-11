@@ -54,6 +54,26 @@ pub fn parent_node(input : TokenStream) -> TokenStream {
             }
         }
 
+        impl ParentNode for #rust_name {
+            fn child<N>(&mut self, child : N)
+                where N : Node, N : 'static {
+                self.children.push(Box::new(child));
+            }
+        }
+
+        impl StylableNode for #rust_name {
+            fn style(&mut self, style : Style) {
+                self.css_props = Some(style);
+            }
+        }
+        
+        impl AttributableNode for #rust_name {
+            fn attribute<A>(&mut self, attribute : A)
+                where A : Attribute, A : 'static {
+                self.attributes.push(Box::new(attribute));
+            }
+        }
+
         impl #rust_name {
             pub fn new() -> Self {
                 #rust_name {
@@ -61,20 +81,6 @@ pub fn parent_node(input : TokenStream) -> TokenStream {
                     children : Vec::new(),
                     css_props : None
                 }
-            }
-
-            pub fn child<N>(&mut self, child : N)
-                where N : Node, N : 'static {
-                self.children.push(Box::new(child));
-            }
-
-            pub fn attribute<A>(&mut self, attribute : A)
-                where A : Attribute, A : 'static {
-                self.attributes.push(Box::new(attribute));
-            }
-
-            pub fn style(&mut self, style : Style) {
-                self.css_props = Some(style);
             }
         }
 
@@ -153,21 +159,25 @@ pub fn void_node(input : TokenStream) -> TokenStream {
             }
         }
 
+        impl StylableNode for #rust_name {
+            fn style(&mut self, style : Style) {
+                self.css_props = Some(style);
+            }
+        }
+
+        impl AttributableNode for #rust_name {
+            fn attribute<A>(&mut self, attribute : A)
+                where A : Attribute, A : 'static {
+                self.attributes.push(Box::new(attribute));
+            }
+        }
+
         impl #rust_name {
             pub fn new() -> Self {
                 #rust_name {
                     attributes : Vec::new(),
                     css_props : None
                 }
-            }
-
-            pub fn attribute<A>(&mut self, attribute : A)
-                where A : Attribute, A : 'static {
-                self.attributes.push(Box::new(attribute));
-            }
-
-            pub fn style(&mut self, style : Style) {
-                self.css_props = Some(style);
             }
         }
 
