@@ -11,6 +11,24 @@ pub mod attr {
     pub trait Attribute : ToString {}
 
     all_attributes!();
+
+    pub struct Custom {
+        attr : String,
+        value : String,
+    }
+    pub fn custom(attr : &str, value : &str) -> Custom {
+        Custom {
+            attr : String::from(attr),
+            value : String::from(value),
+        }
+    }
+    impl ToString for Custom {
+        fn to_string(&self) -> String {
+            format!("{}=\"{}\"", self.attr, self.value)
+        }
+    }
+    impl Attribute for Custom {}
+
 }
 
 // Should probably reference from proc_macros within the macros for every invocation to avoid the
