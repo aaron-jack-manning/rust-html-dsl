@@ -788,17 +788,4 @@ pub fn all_css_props(_ : TokenStream) -> TokenStream {
     code.parse().unwrap()
 }
 
-//#[proc_macro_derive(Something)]
-//pub fn something(input : TokenStream) -> TokenStream {
-//    let ast : DeriveInput = syn::parse(input).unwrap();
-//
-//    let identifier = ast.ident;
-//
-//    let expanded = quote! {
-//        impl Something for #identifier {}
-//    };
-//    
-//    expanded.into()
-//}
-
 
