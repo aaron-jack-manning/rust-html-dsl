@@ -2,6 +2,10 @@
 
 A simple HTML DSL for Rust.
 
+## Design
+
+I created this to be a relatively simple abstraction on HTML such that the code written is close to HTML but gives basic programmatic abstraction such as being able to inline all CSS properties but still reuse them, and generate HTML from other filetypes such as markdown statically, so pure HTML and CSS can still be served. As a consequence of this, there are no runtime checks for injecting things that mess up the HTML in a string. For example using `"` is attributes rather than `&quot;` or injecting HTML tags into a `Text` (`text!`) node.
+
 ## Example
 
 ### Rust
@@ -60,7 +64,3 @@ fn main() {
     </body>
 </html>
 ```
-
-## Future Development
-
-This project is quite simple, and will likely stay very simple by design, but I do plan on adding additional traits such that some subset of the HTML spec can be statically analysed, i.e. invalid children for their corresponding parent will be a type error. I have a working example of this but there's a lot of boilerplate so I am trying to implement without compromising maintainability.
