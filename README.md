@@ -12,7 +12,6 @@ Add to your `Cargo.toml`:
 
 ```
 dsl = { git = "https://github.com/aaron-jack-manning/rust-html-dsl" }
-proc_macros = { git = "https://github.com/aaron-jack-manning/rust-html-dsl" }
 ```
 
 ## Example
