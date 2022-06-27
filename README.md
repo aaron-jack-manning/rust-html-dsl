@@ -6,9 +6,19 @@ A simple HTML DSL for Rust.
 
 I created this to be a relatively simple abstraction on HTML such that the code written is close to HTML but gives basic programmatic abstraction such as being able to inline all CSS properties but still reuse them, and generate HTML from other filetypes such as markdown statically, so pure HTML and CSS can still be served. As a consequence of this, there are no runtime checks for injecting things that mess up the HTML in a string. For example using `"` is attributes rather than `&quot;` or injecting HTML tags into a `Text` (`text!`) node.
 
+## Including in a Project
+
+Add to your `Cargo.toml`:
+
+```
+dsl = { git = "https://github.com/aaron-jack-manning/rust-html-dsl" }
+proc_macros = { git = "https://github.com/aaron-jack-manning/rust-html-dsl" }
+```
+
 ## Example
 
-### Rust
+### Rust Code
+
 ```
 use dsl::{
     *,
